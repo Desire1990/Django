@@ -1,0 +1,89 @@
+{% for book in books %}
+  <tr>
+    <td>{{ book.id }}</td>
+    <td>{{ book.title }}</td>
+    <td>{{ book.author }}</td>
+    <td>{{ book.get_book_type_display }}</td>
+    <td>{{ book.created_on }}</td>
+    <td>{{ book.pages }}</td>
+    <td>{{ book.price }}</td>
+    <td style="width: 150px">
+      <button type="button"
+              class="btn btn-warning btn-sm js-update-book"
+              data-url="{% url 'book_update' book.id %}">
+        <span class="glyphicon glyphicon-pencil"></span> Edit
+      </button>
+      <button type="button"
+              class="btn btn-danger btn-sm js-delete-book"
+              data-url="{% url 'book_delete' book.id %}">
+        <span class="glyphicon glyphicon-trash"></span> Delete
+      </button>
+    </td>
+  </tr>
+{% empty %}
+  <tr>
+    <td colspan="8" class="text-center bg-warning">No book</td>
+  </tr>
+{% endfor %}
+
+
+
+
+<!-- <div class='col-sm-6 col-sm-offset-3'>
+    <h1>{{ title }}</h1>
+<form method='GET' action='' class='row'>
+        <div class='col-sm-6'>
+            <div class='input-group'>
+                <input class='form-control' type='text' name='q' placeholder='Search books' value='{{ request.GET.q }}'/>
+                <span class='input-group-btn'>
+                   <input class='btn btn-default' type='submit' value='Search' /> -->
+             <!--        <button class='btn btn-default' type='submit'>Search <i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </div>
+</form>
+{% for book in books %}
+<div class="row">
+  <div class="col-sm-12">
+    <div class="thumbnail">
+      <div class="caption post-detail-item">
+        <h3>{{ book.title }}<small>{{book.publication_date }}</small></h3>
+        <p>Author: {{ book.author}}</p>
+        {{ book.content|truncatechars_html:40 }}
+        <p><a href="{{book.content}}" class="btn btn-primary" role="button">View</a></p>
+      </div>
+      <div style="with = 150px">
+        <button type="button"
+              class="btn btn-warning btn-sm js-update-book"
+              data-url="{% url 'book_update' book.id %}">
+        <span class="glyphicon glyphicon-pencil"></span> Edit
+      </button>
+      <button type="button"
+              class="btn btn-danger btn-sm js-delete-book"
+              data-url="{% url 'book_delete' book.id %}">
+        <span class="glyphicon glyphicon-trash"></span> Delete
+      </button>
+      </div>
+    </div>
+  </div>
+<hr/>
+</div>
+{% endfor %}  -->
+
+
+<!-- <div class="pagination">
+    <span class="step-links">
+        {% if book.has_previous %}
+            <a href="?{{ page_request_var }}={{ object_list.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ book.number }} of {{ book.paginator.num_pages }}.
+        </span>
+
+        {% if  book.has_next %}
+            <a href="?{{ page_request_var }}={{ object_list.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">next</a>
+        {% endif %}
+    </span>
+</div> -->
+<!-- </div> -->
